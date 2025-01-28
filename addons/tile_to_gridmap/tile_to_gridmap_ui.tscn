@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://be2ortnjaagn3"]
+
+[ext_resource type="Script" uid="uid://bqcq3pln0gxhy" path="res://addons/tile_to_gridmap/tile_to_gridmap_ui.gd" id="1_ievsx"]
+[ext_resource type="Texture2D" uid="uid://ctitclhfoe0mh" path="res://addons/tile_to_gridmap/TileToGridMap.svg" id="2_ffiu3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ievsx"]
+font_size = 25
+outline_size = 1
+
+[node name="TileToGridmap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ievsx")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 199.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ffiu3")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="TitleLabel" type="Label" parent="Panel/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Tile to Gridmap Manager"
+label_settings = SubResource("LabelSettings_ievsx")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="VerifyButton" type="Button" parent="Panel/CenterContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Verify All Meshes"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="BuildButton" type="Button" parent="Panel/CenterContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+text = "Build All Gridmaps"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="ClearButton" type="Button" parent="Panel/CenterContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Clear All Gridmaps"
+
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/MarginContainer/VerifyButton" to="." method="_on_verify_button_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/MarginContainer3/BuildButton" to="." method="_on_build_button_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/MarginContainer2/ClearButton" to="." method="_on_clear_button_pressed"]
