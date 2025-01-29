@@ -1,4 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
-/android/
-/addons/godot-git-plugin/
+
+#Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
