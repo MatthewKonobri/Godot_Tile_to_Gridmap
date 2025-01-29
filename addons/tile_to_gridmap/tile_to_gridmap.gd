@@ -5,7 +5,7 @@ var tile_to_grid_ui
 
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here. 
-	add_custom_type("TileToGrid", "TileMapLayer", preload("res://addons/tile_to_gridmap/tile_to_grid.gd"), preload("res://addons/tile_to_gridmap/icons/TileToGridMap.svg"))
+	add_custom_type("TileToGrid", "TileMapLayer", preload("res://addons/tile_to_gridmap/tile_to_grid.gd"), preload("res://addons/tile_to_gridmap/TileToGridMap.svg"))
 	tile_to_grid_ui = preload("res://addons/tile_to_gridmap/tile_to_gridmap_ui.tscn").instantiate()
 	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_BL, tile_to_grid_ui)
 	tile_to_grid_ui.verify_button_pressed.connect(on_verify_button_pressed)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://btuis770lmkpe"]
+
+[ext_resource type="Texture2D" uid="uid://bnys7b34lmg3b" path="res://addons/tile_to_gridmap/example/tilemaps/Minifantasy_ForgottenPlainsProps.png" id="1_hsxyq"]
+
+[node name="fp_prop_flower_03" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375282, 0)
+pixel_size = 0.125
+billboard = 2
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("1_hsxyq")
+region_enabled = true
+region_rect = Rect2(88, 72, 8, 8)
