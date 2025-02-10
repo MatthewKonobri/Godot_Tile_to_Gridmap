@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2an336lgayaj"
-path="res://.godot/imported/ForgottenPlainsTerrain.png-ee941cdea8744ceca08fc10c5fb71b16.ctex"
+uid="uid://jsynj4tdlbwt"
+path="res://.godot/imported/Minifantasy_ForgottenPlainsMockup.png-132f6542e25d511f298325dc2c046073.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/tile_to_gridmap/example/tilemaps/ForgottenPlainsTerrain.png"
-dest_files=["res://.godot/imported/ForgottenPlainsTerrain.png-ee941cdea8744ceca08fc10c5fb71b16.ctex"]
+source_file="res://screenshots/Minifantasy_ForgottenPlainsMockup.png"
+dest_files=["res://.godot/imported/Minifantasy_ForgottenPlainsMockup.png-132f6542e25d511f298325dc2c046073.ctex"]
 
 [params]
 
@@ -25,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
