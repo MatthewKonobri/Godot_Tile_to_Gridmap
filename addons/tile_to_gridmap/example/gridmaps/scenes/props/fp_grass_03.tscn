@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2eit6jav1yg0"]
+
+[ext_resource type="Texture2D" uid="uid://dqlj0tahr3g5n" path="res://addons/tile_to_gridmap/example/tilemaps/tiletogridterrain_0_props.png" id="1_fjnxq"]
+
+[node name="fp_grass_03" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17284, 0)
+pixel_size = 0.125
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_fjnxq")
+region_enabled = true
+region_rect = Rect2(91, 52, 2, 3)
