@@ -17,7 +17,7 @@ https://prominent.itch.io/crocotile3d
 
 ## Project Setup
 
-Requires Godot 4.4, Download from the Asset Tab in Godot it will install to the addons folder.
+Requires Godot 4.4, Download from the AssetLib tab in Godot. It will install to the addons folder.
 
 ![](https://raw.githubusercontent.com/MatthewKonobri/Godot_Tile_to_Gridmap/refs/heads/master/screenshots/Godot_v4.4-beta3_win64_E4MCXfuPh4.png)
 
