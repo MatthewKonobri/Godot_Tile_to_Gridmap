@@ -17,13 +17,7 @@ https://prominent.itch.io/crocotile3d
 
 ## Project Setup
 
-Requires Godot 4.4 beta or release candidate.
-
-Due to how the Godot Asset library works, while 4.4 is not officially released projects that require 4.4 don't show up in the engines browser. Once 4.4 is out this should be listed
-
-For now:
-Download from GitHub: https://github.com/MatthewKonobri/Godot_Tile_to_Gridmap
-Place addons/tiletogridmap folder in your project.
+Requires Godot 4.4, Download from the Asset Tab in Godot it will install to the addons folder.
 
 ![](https://raw.githubusercontent.com/MatthewKonobri/Godot_Tile_to_Gridmap/refs/heads/master/screenshots/Godot_v4.4-beta3_win64_E4MCXfuPh4.png)
 
