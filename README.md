@@ -15,6 +15,8 @@ https://krishna-palacio.itch.io/minifantasy-dungeon
 Example Meshes made using Crocotile3D
 https://prominent.itch.io/crocotile3d
 
+![](https://github.com/MatthewKonobri/Godot_Tile_to_Gridmap/blob/master/screenshots/TAOk3CR.gif?raw=true)
+
 ## Project Setup
 
 Requires Godot 4.4, Download from the AssetLib tab in Godot. It will install to the addons folder.
