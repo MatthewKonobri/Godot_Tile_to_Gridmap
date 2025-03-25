@@ -35,18 +35,19 @@ func generate_world():
 	grass_tile_array.clear()
 	scaled_base_tile_array.clear()
 	scaled_grass_tile_array.clear()
-	scaled_grass_tile_array.clear()
+	scaled_water_tile_array.clear()
 	
 	for x in range(width):
 		for y in range(height):
 			var noise_value = noise_height_texture.noise.get_noise_2d(x,y)
-			if noise_value >= 0 and noise_value <= 0.2:
+			noise_value = (noise_value + 1) /2
+			if noise_value >= 0.4 and noise_value <= 0.6:
 				base_tile_array.append(Vector2i(x,y))
 			
-			if noise_value < 0:
+			if noise_value < 0.4:
 				water_tile_array.append(Vector2i(x,y))
 			
-			if noise_value > 0.2:
+			if noise_value > 0.6:
 				grass_tile_array.append(Vector2i(x,y))
 	scale_grid(base_tile_array, scaled_base_tile_array)
 	scale_grid(water_tile_array, scaled_water_tile_array)
@@ -61,6 +62,7 @@ func show_noise_min_and_max():
 	for x in range(width):
 		for y in range(height):
 			var noise_value = noise_height_texture.noise.get_noise_2d(x,y)
+			noise_value = (noise_value + 1) /2
 			noise_value_array.append(noise_value)
 	
 	noise_min = noise_value_array.min()
