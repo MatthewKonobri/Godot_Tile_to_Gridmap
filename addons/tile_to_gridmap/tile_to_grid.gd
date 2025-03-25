@@ -1,5 +1,6 @@
 @tool
 extends TileMapLayer
+class_name TileToGrid
 
 @export var gridmap: GridMap
 @export var grid_hieght: int
