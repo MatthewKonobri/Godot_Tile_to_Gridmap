@@ -12,6 +12,7 @@ extends Node
 
 func clear_tilemap():
 	tile_map.clear()
+	tile_map.clear_tiles()
 	
 func generate_world():
 	clear_tilemap()
@@ -20,6 +21,8 @@ func generate_world():
 		for y in range(0, height, chunk_size):
 			process_chunk(x, y, min(chunk_size, width - x), min(chunk_size, height - y))
 			await get_tree().process_frame  # Allow rendering updates
+			tile_map.copy_tiles()
+			#tile_map.clear()
 
 func process_chunk(start_x: int, start_y: int, chunk_w: int, chunk_h: int):
 	var terrain_map := {}

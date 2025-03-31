@@ -20,16 +20,29 @@ func _exit_tree() -> void:
 	tile_to_grid_ui.queue_free()
 
 func on_verify_button_pressed() -> void:
-	var ttgs = get_tree().get_nodes_in_group("tiletogridgroup")
+	var ttgs = get_nodes_in_group_in_tree("tiletogridgroup")
 	for ttg in ttgs:
 		ttg.verify_meshnames()
 
 func on_build_button_pressed() -> void:
-	var ttgs = get_tree().get_nodes_in_group("tiletogridgroup")
+	var ttgs = get_nodes_in_group_in_tree("tiletogridgroup")
 	for ttg in ttgs:
 		ttg.copy_tiles()
 
 func on_clear_button_pressed() -> void:
-	var ttgs = get_tree().get_nodes_in_group("tiletogridgroup")
+	var ttgs = get_nodes_in_group_in_tree("tiletogridgroup")
 	for ttg in ttgs:
 		ttg.clear_tiles()
+
+# Recursively collect all nodes in the "tiletogridgroup" group, ensuring they are in tree order
+func get_nodes_in_group_in_tree(group_name: String) -> Array:
+	var nodes_in_group = []
+	collect_nodes_in_group_in_tree(get_tree().root, group_name, nodes_in_group)
+	return nodes_in_group
+
+# Recursively collect nodes that are in the specified group
+func collect_nodes_in_group_in_tree(node: Node, group_name: String, result: Array) -> void:
+	if node.is_in_group(group_name):
+		result.append(node)
+	for child in node.get_children():
+		collect_nodes_in_group_in_tree(child, group_name, result)
