@@ -1,102 +1,71 @@
+@tool
 extends TileMapLayer
 
-@export var display_tilemap: TileMap
-@export var debug_mode: bool = true  # Toggle debugging
-var label_container: Node = null  # Container for all debug labels
-const NEIGHBOURS: Array = [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)]
-var neighbours_to_atlas_coord: Dictionary = {}
+@export var grid_map: GridMap
+@export var grid_hieght: int
 
-func _ready():
-	generate_adjacency_rules()
-	if debug_mode:
-		label_container = Node2D.new()
-		add_child(label_container)  # Add label container to the scene
-	for coord in get_used_cells():
-		set_display_tile(coord)
+const NEIGHBOURS: Array = [
+	Vector2i(0, 0),   # Top-left
+	Vector2i(1, 0),   # Top-right
+	Vector2i(0, 1),   # Bottom-left
+	Vector2i(1, 1)    # Bottom-right
+]
 
-func generate_adjacency_rules():
-	var adjacency_cases = [
-		["match", "match", "match", "match"],  # Fully matching
-		["group1", "group1", "match", "group1"],  # Outer bottom-left
-		["group1", "match", "group1", "group1"],  # Outer bottom-right
-		["match", "group1", "group1", "group1"],  # Outer top-right
-		["group1", "group1", "group1", "match"],  # Outer top-left
-		["group1", "match", "group1", "match"],  # Right edge
-		["match", "group1", "match", "group1"],  # Left edge
-		["group1", "group1", "match", "match"],  # Bottom edge
-		["match", "match", "group1", "group1"],  # Top edge
-		["group1", "match", "match", "match"],  # Inner bottom-right
-		["match", "group1", "match", "match"],  # Inner bottom-left
-		["match", "match", "group1", "match"],  # Inner top-right
-		["match", "match", "match", "group1"],  # Inner top-left
-		["group2", "group2", "match", "group2"],  # Secondary group transition
-		["group2", "match", "match", "group2"],  # Secondary group transition
-		["none", "none", "none", "none"]  # Hard edge (isolated tile)
-	]
-	var x = 0
-	var y = 0
-	for case in adjacency_cases:
-		neighbours_to_atlas_coord[case] = Vector2i(x, y)
-		x += 1
-		if x > 3:
-			x = 0
-			y += 1
+@export_tool_button("Build Gridmap") var BuildGridmap = build_gridmap
+@export_tool_button("Clear Gridmap") var ClearGridmap = clear_tiles
 
-func set_display_tile(pos: Vector2i):
-	for i in range(NEIGHBOURS.size()):
-		var new_pos = pos + NEIGHBOURS[i]
-		display_tilemap.set_cell(0, new_pos, 1, calculate_display_tile(new_pos))
+func build_gridmap():
+	for tile in get_used_cells():
+		set_grid_tile(tile)
 
-func calculate_display_tile(coords: Vector2i) -> Vector2i:
-	var center_tile = get_tile_type(coords)
-	var center_group1 = get_tile_group(coords, "group_type_1")
-	var center_group2 = get_tile_group(coords, "group_type_2")
+func set_grid_tile(tile):
+	for neighbour in NEIGHBOURS:
+		var new_position = tile + neighbour
+		var tile_data = get_cell_tile_data(tile)
+		if tile_data:
+			var id : int = calculate_grid_tile(new_position)
+			var tile_name = tile_data.get_custom_data("Name")
+			var mesh_name : String = str(tile_name) + str(id)
+			var mesh_int = grid_map.mesh_library.find_item_by_name(mesh_name)
+				
+			print("Placing tile at: ", new_position)  
+			print("Mesh name: ", mesh_name)
+			print("Mesh index: ", mesh_int)
+			
+			if mesh_int != -1:
+				grid_map.set_cell_item(Vector3i(new_position.x, grid_hieght, new_position.y), mesh_int)
+			else:
+				print("Error: Mesh not found for: ", mesh_name)
 
-	var bot_right = get_adjacency_rule(coords - NEIGHBOURS[0], center_tile, center_group1, center_group2)
-	var bot_left = get_adjacency_rule(coords - NEIGHBOURS[1], center_tile, center_group1, center_group2)
-	var top_right = get_adjacency_rule(coords - NEIGHBOURS[2], center_tile, center_group1, center_group2)
-	var top_left = get_adjacency_rule(coords - NEIGHBOURS[3], center_tile, center_group1, center_group2)
-
-	var adjacency_key = [top_left, top_right, bot_left, bot_right]
-	var atlas_coord = neighbours_to_atlas_coord.get(adjacency_key, Vector2i.ZERO)
-	
-	#if debug_mode:
-		#create_debug_label(coords, top_left, top_right, bot_left, bot_right)
-	
-	return atlas_coord
-
-func get_adjacency_rule(coords: Vector2i, reference_tile: String, reference_group1: String, reference_group2: String) -> String:
-	var tile_type = get_tile_type(coords)
-	var tile_group1 = get_tile_group(coords, "group_type_1")
-	var tile_group2 = get_tile_group(coords, "group_type_2")
-
-	if tile_type == reference_tile:
-		return "match"
-	elif tile_type == "BaseTile":
-		return "group1" if tile_group1 == reference_group1 else "none"
-	elif tile_group1 == reference_group1:
-		return "group1"
-	elif tile_group2 == reference_group2:
-		return "group2"
-	return "none"
-
-func get_tile_type(coords: Vector2i) -> String:
-	var tile_data = get_cell_tile_data(coords)
+func calculate_grid_tile(tile_pos: Vector2i) -> int:
+	var tile_data = get_cell_tile_data(tile_pos)
+	var tile_name : String
 	if tile_data:
-		return tile_data.get_custom_data("tile_type")
-	return "None"
+		tile_name = tile_data.get_custom_data("Name")
+	var bottom_right = match_tile_name(tile_pos - NEIGHBOURS[0], tile_name)
+	var bottom_left = match_tile_name(tile_pos - NEIGHBOURS[1], tile_name)
+	var top_right = match_tile_name(tile_pos - NEIGHBOURS[2], tile_name)
+	var top_left = match_tile_name(tile_pos - NEIGHBOURS[3], tile_name)
+	var tile_id : int = 0
+	if top_left:
+		tile_id += 8
+	if top_right:
+		tile_id += 1
+	if bottom_left:
+		tile_id += 4
+	if bottom_right:
+		tile_id += 2
+	return tile_id
 
-func get_tile_group(coords: Vector2i, group_name: String) -> String:
+
+func match_tile_name(coords : Vector2i, tile : String) -> bool:
 	var tile_data = get_cell_tile_data(coords)
-	if tile_data:
-		return tile_data.get_custom_data(group_name)
-	return "None"
-
-#func create_debug_label(coords: Vector2i, top_left: String, top_right: String, bot_left: String, bot_right: String):
-	#var rule = [top_left, top_right, bot_left, bot_right].join(" | ")
-	#var label = Label.new()
-	#label.text = rule
-	#label.rect_min_size = Vector2(40, 20)
-	#label.align = Label.ALIGN_CENTER
-	#label.rect_position = Vector2(coords.x * cell_size.x + 4, coords.y * cell_size.y + 4)
-	#label_container.add_child(label)
+	if !tile_data:
+		return false
+	var tile_name = tile_data.get_custom_data("Name")
+	var tile_match = tile_name == tile
+	return tile_match
+	
+# Clears all tiles from grid_map
+func clear_tiles():
+	grid_map.clear()

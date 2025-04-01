@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cycjbaot5w8hw"
-path="res://.godot/imported/grass12.gltf-db31e64f7a7ba78ec995f09357889418.scn"
+uid="uid://bgctu1qio72aq"
+path="res://.godot/imported/base3.gltf-67074ce2c68d87b11522279466856831.scn"
 
 [deps]
 
-source_file="res://addons/tile_to_gridmap/example/gridmaps/meshes/dualgrid/grass12.gltf"
-dest_files=["res://.godot/imported/grass12.gltf-db31e64f7a7ba78ec995f09357889418.scn"]
+source_file="res://addons/tile_to_gridmap/example/gridmaps/meshes/dualgrid/base3.gltf"
+dest_files=["res://.godot/imported/base3.gltf-67074ce2c68d87b11522279466856831.scn"]
 
 [params]
 
