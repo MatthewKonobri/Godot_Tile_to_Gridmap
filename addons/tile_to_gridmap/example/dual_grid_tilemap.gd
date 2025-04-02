@@ -22,7 +22,7 @@ func set_grid_tile(tile):
 	for neighbour in NEIGHBOURS:
 		var new_position = tile + neighbour
 		var tile_data = get_cell_tile_data(tile)
-		var tile_name = tile_data.get_custom_data("Name")
+		var tile_name = pick_name_by_height(new_position)
 		if tile_data:
 			var id : int = calculate_grid_tile(new_position, tile_name)
 			var mesh_name : String = str(tile_name) + str(id)
@@ -64,7 +64,6 @@ func calculate_grid_tile(tile_pos: Vector2i, tile_name: String) -> int:
 	print("Total ", tile_id)
 	return tile_id
 
-
 func match_tile_name(coords : Vector2i, tile : String) -> bool:
 	var tile_data = get_cell_tile_data(coords)
 	print("Checking tile at ", coords, tile)
@@ -75,7 +74,37 @@ func match_tile_name(coords : Vector2i, tile : String) -> bool:
 	var tile_match = tile_name == tile
 	print("Found checking name ", tile, " against ", tile_name)
 	return tile_match
-	
-# Clears all tiles from grid_map
+
+func pick_name_by_height(tile_pos : Vector2i) -> String:
+	var bottom_right = get_cell_tile_data(tile_pos - NEIGHBOURS[0])
+	var bottom_left = get_cell_tile_data(tile_pos - NEIGHBOURS[1])
+	var top_right = get_cell_tile_data(tile_pos - NEIGHBOURS[2])
+	var top_left = get_cell_tile_data(tile_pos - NEIGHBOURS[3])
+	var dict = {}
+	if bottom_right:
+		var bottom_right_height : int = bottom_right.get_custom_data("Height")
+		dict.set(bottom_right, bottom_right_height)
+	if bottom_left:
+		var bottom_left_height : int = bottom_left.get_custom_data("Height")
+		dict.set(bottom_left, bottom_left_height)
+	if top_right:
+		var top_right_height : int = top_right.get_custom_data("Height")
+		dict.set(top_right, top_right_height)
+	if top_left:
+		var top_left_height : int = top_left.get_custom_data("Height")
+		dict.set(top_left,top_left_height)
+	var max_height = find_largest_dict_val(dict)
+	return max_height.get_custom_data("Name")
+
+func find_largest_dict_val(dict):
+	var max_val = -999999
+	var max_var
+	for i in dict:
+		var val =  dict[i]
+		if val > max_val:
+			max_val = val
+			max_var = i
+	return max_var
+
 func clear_tiles():
 	grid_map.clear()
