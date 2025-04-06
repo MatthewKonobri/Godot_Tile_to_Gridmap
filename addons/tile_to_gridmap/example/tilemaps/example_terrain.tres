@@ -1,0 +1,36 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dxmdq15fhqlpg"]
+
+[ext_resource type="Texture2D" uid="uid://1c1t0hj184o3" path="res://addons/tile_to_gridmap/example/tilemaps/terrain512_dg.png" id="1_noifu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f5d8"]
+texture = ExtResource("1_noifu")
+texture_region_size = Vector2i(8, 8)
+1:1/0 = 0
+1:1/0/custom_data_0 = "base"
+1:1/0/custom_data_1 = -10
+2:1/0 = 0
+2:1/0/custom_data_0 = "grass"
+3:1/0 = 0
+3:1/0/custom_data_0 = "dirt"
+4:1/0 = 0
+4:1/0/custom_data_0 = "tilegrass"
+5:1/0 = 0
+5:1/0/custom_data_0 = "tiledirt"
+6:1/0 = 0
+6:1/0/custom_data_0 = "hill"
+7:1/0 = 0
+7:1/0/custom_data_0 = "cliff"
+8:1/0 = 0
+8:1/0/custom_data_0 = "watergrass"
+1:2/0 = 0
+1:2/0/custom_data_0 = "waterdirt"
+
+[resource]
+tile_size = Vector2i(8, 8)
+custom_data_layer_0/name = "Name"
+custom_data_layer_0/type = 4
+custom_data_layer_1/name = "Height"
+custom_data_layer_1/type = 2
+custom_data_layer_2/name = "Exclude"
+custom_data_layer_2/type = 4
+sources/0 = SubResource("TileSetAtlasSource_0f5d8")

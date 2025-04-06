@@ -49,15 +49,6 @@ text = "Tile to Gridmap Manager"
 label_settings = SubResource("LabelSettings_ievsx")
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_right = 20
-
-[node name="VerifyButton" type="Button" parent="Panel/CenterContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
-text = "Verify All Meshes"
-
 [node name="MarginContainer3" type="MarginContainer" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
@@ -76,6 +67,5 @@ theme_override_constants/margin_right = 20
 layout_mode = 2
 text = "Clear All Gridmaps"
 
-[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/MarginContainer/VerifyButton" to="." method="_on_verify_button_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/MarginContainer3/BuildButton" to="." method="_on_build_button_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/MarginContainer2/ClearButton" to="." method="_on_clear_button_pressed"]

@@ -5,29 +5,25 @@ var tile_to_grid_ui
 
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here. 
-	add_custom_type("TileToGrid", "TileMapLayer", preload("res://addons/tile_to_gridmap/tile_to_grid.gd"), preload("res://addons/tile_to_gridmap/TileToGridMap.svg"))
+	add_custom_type("T2GTerrainLayer", "TileToGrid", preload("res://addons/tile_to_gridmap/t2g_terrain_layer.gd"), preload("res://addons/tile_to_gridmap/TileToGridMap.svg"))
+	add_custom_type("T2GProcGenManager", "TileToGrid", preload("res://addons/tile_to_gridmap/t2g_proc_gen_manager.gd"), preload("res://addons/tile_to_gridmap/TileToGridMap.svg"))
 	tile_to_grid_ui = preload("res://addons/tile_to_gridmap/tile_to_gridmap_ui.tscn").instantiate()
 	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_BL, tile_to_grid_ui)
-	tile_to_grid_ui.verify_button_pressed.connect(on_verify_button_pressed)
 	tile_to_grid_ui.build_button_pressed.connect(on_build_button_pressed)
 	tile_to_grid_ui.clear_button_pressed.connect(on_clear_button_pressed)
 
 
 func _exit_tree() -> void:
 	# Clean-up of the plugin goes here.
-	remove_custom_type("TileToGrid")
+	remove_custom_type("T2GTerrainLayer")
+	remove_custom_type("T2GProcGenManager")
 	remove_control_from_docks(tile_to_grid_ui)
 	tile_to_grid_ui.queue_free()
-
-func on_verify_button_pressed() -> void:
-	var ttgs = get_nodes_in_group_in_tree("tiletogridgroup")
-	for ttg in ttgs:
-		ttg.verify_meshnames()
 
 func on_build_button_pressed() -> void:
 	var ttgs = get_nodes_in_group_in_tree("tiletogridgroup")
 	for ttg in ttgs:
-		ttg.copy_tiles()
+		ttg.build_gridmap()
 
 func on_clear_button_pressed() -> void:
 	var ttgs = get_nodes_in_group_in_tree("tiletogridgroup")
