@@ -11,6 +11,7 @@ class_name T2GTerrainLayer
 @export var grid_height: int
 
 var tilemap_layers: Dictionary = {}
+var tile_height_cache: Dictionary = {}
 
 const NEIGHBOURS: Array = [
 	Vector2i(0, 0),   # Top-left
@@ -80,6 +81,7 @@ func set_grid_tile(tile: Vector2i):
 	if !tile_data:
 		return
 	var tile_name = pick_name_by_height(tile)
+	var tile_height = tile_data.get_custom_data("Height")
 	var excluded := []
 	if tile_data.has_custom_data("Exclude"):
 		excluded = parse_excluded(tile_data.get_custom_data("Exclude"))
@@ -92,7 +94,21 @@ func set_grid_tile(tile: Vector2i):
 		var mesh_name = pick_random_variant(base_name)
 		var mesh_int = grid_map.mesh_library.find_item_by_name(mesh_name)
 		if mesh_int != -1:
+			var existing_mesh_int = grid_map.get_cell_item(Vector3i(new_position.x, grid_height, new_position.y))
+			if existing_mesh_int != -1:
+				var existing_tile_height = tile_height_cache.get(Vector2i(new_position.x, new_position.y), -1)
+				if existing_tile_height >= tile_height:
+					continue
 			grid_map.set_cell_item(Vector3i(new_position.x, grid_height, new_position.y), mesh_int)
+			# Cache the height of the newly placed tile
+			tile_height_cache[Vector2i(new_position.x, new_position.y)] = tile_height
+
+func get_tile_height_by_name(tile_name: String) -> int:
+	for tile in get_used_cells():
+		var tile_data = get_cell_tile_data(tile)
+		if tile_data and tile_data.get_custom_data("Name") == tile_name:
+			return tile_data.get_custom_data("Height")
+	return -1  # Default height if not found
 
 func calculate_grid_tile(tile_pos: Vector2i, tile_name: String) -> int:
 	var tile_data = {
@@ -133,6 +149,12 @@ func pick_name_by_height(tile_pos: Vector2i) -> String:
 	if tiles.is_empty():
 		return ""
 	tiles.sort_custom(func(a, b): return a[1] > b[1])
+	
+	# Debug prints
+	#for tile in tiles:
+	#	print("Tile: ", tile[0].get_custom_data("Name"), " Height: ", tile[1])
+	#print("Chosen Tile: ", tiles[0][0].get_custom_data("Name"))
+	
 	return tiles[0][0].get_custom_data("Name")
 
 func pick_random_variant(base_name: String) -> String:

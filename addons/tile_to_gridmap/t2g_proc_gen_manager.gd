@@ -62,8 +62,7 @@ func generate_world():
 				continue  # Skip manual flagged chunks
 			assign_chunk_terrain(x, y, min(tilemap_chunk_size, width - x), min(tilemap_chunk_size, height - y), tilemap)
 			await get_tree().process_frame
-			tilemap.build_gridmap()
-	apply_transitions()
+		apply_transitions()
 	for tilemap in tilemap_layers.values():
 		tilemap.build_gridmap()
 	visible = true
@@ -107,8 +106,10 @@ func apply_transitions():
 			var local_pos = pos - (chunk_coords * tilemap_chunk_size)
 			if similar_neighbors == 8:
 				tilemap.set_cell(pos, 0, current.atlas_coordinates)
+				print("Setting cell at pos: ", pos, " to terrain: ", current)
 			else:
 				tilemap.set_cell(pos, 0, transition_tile)
+				print("Setting transition tile at pos: ", pos, " due to ", 8 - similar_neighbors, " dissimilar neighbors")
 
 func register_manual_tilemaps():
 	tilemap_layers.clear()
