@@ -1,6 +1,11 @@
 # Tile to Gridmap for Godot 4.4
 
-This plugin was created to allow the use of Godot's autotiling features with Gridmaps. 
+**1.1 Update changes the way tiles are placed in the world, no longer relying on Godot's built in autotiling. This makes setting up the tile sets more streamlined and easier to work with. Also less tiles are needed for a full terrian set.**
+Dual grid system based off of this video by jess::codes
+https://www.youtube.com/watch?v=jEWFSv3ivTg
+
+See the changes in the Tileset Setup Section Below:
+https://github.com/MatthewKonobri/Godot_Tile_to_Gridmap?tab=readme-ov-file#tileset-setup
 
 This plugin does not create the meshes just allows you to draw a tilemap using Godot's tools and place associated meshes and scenes on a gridmap. It works great when using pixel art style low poly meshes that you want to be placed following a tilemap terrain ruleset. Any mesh or scene can be used not just low poly 3D pixel art.
 
