@@ -1,7 +1,8 @@
 # Tile to Gridmap for Godot 4.4
 
-**1.1 Update changes the way tiles are placed in the world, no longer relying on Godot's built in autotiling. This makes setting up the tile sets more streamlined and easier to work with. Also less tiles are needed for a full terrian set.**
-Dual grid system based off of this video by jess::codes
+**1.1 Update changes the way tiles are placed in the world, no longer relying on Godot's built in autotiling. This makes setting up the tile sets more streamlined and easier to work with. Also less tiles are needed for a full terrian set. 1.1 also adds some Procedural Generation systems.**
+
+Dual grid tile placement system based off of this video by jess::codes
 https://www.youtube.com/watch?v=jEWFSv3ivTg
 
 See the changes in the Tileset Setup Section Below:
