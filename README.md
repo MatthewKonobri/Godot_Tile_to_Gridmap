@@ -56,12 +56,12 @@ The Tile to Grid node is an extension to the Tile Map Layer node.
 
 To set it up the Tile to Grid node will need an assigned tile set resource just like a regular Tile Map Layer. The resource will need 3 custom data fields and won't function without them:
 
-- MeshName (string)
-	The name of the mesh file that will be associated with an individual tile. 
-- Rotation (int)
-	Used for meshes that can be rotated.
-- Scene (Object)
-	A reference when you want to place more than just a mesh in the grid.
+- Name (string)
+	The base name for the terrain type meshes that will be associated with an individual tile. 
+- Height (int)
+	Used to proirtize a terrain types when placed next to each other (Higher values get placed instead of lower values)
+- Exclude (string)
+	Used to skip indivual tiles when placing terrain type. (exaple: skip the top center tiles of cliffs if you want to place other terrains there at a higher elevation)
 
 ![](https://raw.githubusercontent.com/MatthewKonobri/Godot_Tile_to_Gridmap/refs/heads/master/screenshots/Godot_v4.4-beta3_win64_5YABKNQHVM.png)
 
