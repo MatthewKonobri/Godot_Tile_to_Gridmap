@@ -40,7 +40,7 @@ You should see the Tile to Gridmap Manager Dock open in the bottom right:
 ## Use in a Scene
 
 To use Tile to Gridmap in a scene you need at least two nodes:
-- Tile to Grid node
+- T2GTerrainLayer node
 	- With a loaded tileset resource.
 - Gridmap node
 	- With a loaded mesh Library.
@@ -51,10 +51,10 @@ I tend to use multiple of these in a given scene and group them under separate p
 
 I like to separate the nodes into different height layers as well as terrain, features, buildings, and props. I go into more detail later in this document.
 
-## Tile to Grid Node
+## T2GTerrainLayer Node
 The Tile to Grid node is an extension to the Tile Map Layer node. 
 
-To set it up the Tile to Grid node will need an assigned tile set resource just like a regular Tile Map Layer. The resource will need 3 custom data fields and won't function without them:
+To set it up the T2GTerrainLayer node will need an assigned tile set resource just like a regular Tile Map Layer. The resource will need 3 custom data fields and won't function without them:
 
 - Name (string)
 	The base name for the terrain type meshes that will be associated with an individual tile. 
@@ -65,20 +65,17 @@ To set it up the Tile to Grid node will need an assigned tile set resource just 
 
 ![](https://raw.githubusercontent.com/MatthewKonobri/Godot_Tile_to_Gridmap/refs/heads/master/screenshots/Godot_v4.4-beta3_win64_5YABKNQHVM.png)
 
-The example scene has use cases for each of these. 
-
 ![](https://raw.githubusercontent.com/MatthewKonobri/Godot_Tile_to_Gridmap/refs/heads/master/screenshots/Godot_v4.4-beta3_win64_8UL8s8XUx6.png)
 
 TileToGrid nodes have unique variables and function buttons:
+- Is Manual Chunk:
+  	Used in procedural generation to lock a chunk so procgen will not overwrite it.
+- Chunk Coords, Chunk Size and Tilesize:
+	- Used in procedural genration to manage chunk location, can be ignored if only using one T2GTerrainLayer.
 - GridMap:
 	This is a reference to a gridmap node in the scene where you want the associated meshes placed. 
 - Grid Height
 	The height layer on the gridmap you want to associate with this TileToGridLayer (default: 0)
-- Hide on Run
-	A bool to hide the TileToGridLayer from showing on run (Default: True)
-		Without this your 2D tilemaps will show in your camera view over the 3D scene.
-- Verify Mesh Names
-	Pressing this will check all the tiles in the tile map resource to see if the mesh libaray used by the gridmap has a corresponding mesh. Good to check your tileset for possible typos. 
 - Build Gridmap
 	This places all the meshes and scenes drawn on the tilemap layer in the corresponding location on the grid map. 
 - ClearGridmap
@@ -89,12 +86,10 @@ The Tile To Grid Manager is a dock with buttons that will run the commands on ev
 
 ![](https://raw.githubusercontent.com/MatthewKonobri/Godot_Tile_to_Gridmap/refs/heads/master/screenshots/Godot_v4.4-beta3_win64_3mEDga3RRW.png)
 
-- Verify All Meshes
-	Pressing this will check all the tiles in all of the tile to grid nodes tile map resource to see if the mesh library used by their associated gridmaps has a corresponding mesh. Good to check your tilesets for possible typos. 
 - Build All Gridmaps
-	This places all the meshes and scenes drawn on all of the tile to grid nodes in the corresponding location on their associated gridmaps. 
+	This places all the meshes and scenes drawn on all of the T2GTerrainLayer nodes in the corresponding location on their associated gridmaps. 
 - Clear All Gridmaps
-	This clears all the content (meshes and scenes) placed on all tile to grid nodes associated grid map. 
+	This clears all the content (meshes and scenes) placed on all T2GTerrainLayer nodes associated grid map. 
 
 ## Other Requirements
 You will need to make both a tileset resource and a mesh library with the meshes you are going to use. I recommend reading the official Godot Docs on how to setup both of these:
@@ -121,10 +116,6 @@ I will walk you through how I set mine up in the example scene:
 - Under Custom Data Layers add the required Elements
 
 ![](https://raw.githubusercontent.com/MatthewKonobri/Godot_Tile_to_Gridmap/refs/heads/master/screenshots/Godot_v4.4-beta3_win64_5YABKNQHVM.png)
-
-- Under Terrain Sets add your Terrain Elements for auto tiling
-	I will use Base Color / Grass / Dirt in this example
-	The example scene uses match corners, use what is appropriate for your own tileset. 
 
 - On the Bottom menu of the screen open the Tileset Tab:
 
