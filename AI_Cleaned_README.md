@@ -313,7 +313,7 @@ The **`T2GProps`** node extends the GridMap node and provides automated prop pla
 
 ## Credits
 
-- Plugin created by **Matthew Konobri** (GitHub: [MatthewKonobri](https://github.com/MatthewKonobri)).
+- Plugin created by **Matthew O'Brien** (GitHub: [MatthewKonobri](https://github.com/MatthewKonobri)).
 - Example art used with permission from **Krishna Palacio**:  
   - [Mini Fantasy Forgotten Plains](https://krishna-palacio.itch.io/minifantasy-forgotten-plains)  
   - [Mini Fantasy Dungeon](https://krishna-palacio.itch.io/minifantasy-dungeon)
