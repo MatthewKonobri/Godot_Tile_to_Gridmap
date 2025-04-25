@@ -49,7 +49,7 @@ Example art used in the demo scene (with permission) by **Krishna Palacio**:
 - [Mini Fantasy Dungeon](https://krishna-palacio.itch.io/minifantasy-dungeon)
 
 Example meshes created using **Crocotile3D**:  
-- [Crocotile3D by Prominent](https://prominent.itch.io/crocotile3d)
+- [Crocotile3D](https://prominent.itch.io/crocotile3d)
 
 ![Example GIF](https://github.com/MatthewKonobri/Godot_Tile_to_Gridmap/blob/master/screenshots/TAOk3CR.gif?raw=true)
 
@@ -153,9 +153,6 @@ The **`T2GTerrainLayer`** node extends Godot’s `TileMapLayer` and provides add
 - **Clear Gridmap:**  
   Clears the associated meshes/scenes from the GridMap.
 
-(Continuing with the remaining sections...)
-
-
 ## Tile to Gridmap Manager
 
 The **Tile to Gridmap Manager** provides a dock panel with global actions for managing all `T2GTerrainLayer` nodes in the scene.
@@ -222,8 +219,6 @@ Proper setup of your **TileSet** and **MeshLibrary** is required for the system 
 > More details on bitmasking: [Classification of Tilesets by Boris the Brave](https://www.boristhebrave.com/2021/11/14/classification-of-tilesets/#A_Recap_on_Auto-Tiling)
 
 ---
-
-(Continuing with Drawing the Tilemap and Procedural Generation System...)
 
 ## Drawing the Tilemap
 
