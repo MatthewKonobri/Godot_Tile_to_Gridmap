@@ -325,5 +325,4 @@ The **`T2GProps`** node extends the GridMap node and provides automated prop pla
 - Example meshes made using **Crocotile3D**:  
   - [Crocotile3D by Prominent](https://prominent.itch.io/crocotile3d)
 
-Thank you for using Tile to Gridmap!  
-I hope this tool helps bring your maps to life.
+Thank you for using Tile to Gridmap!
