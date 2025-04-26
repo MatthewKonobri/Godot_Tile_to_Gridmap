@@ -318,6 +318,6 @@ The **`T2GProps`** node extends the GridMap node and provides automated prop pla
   - [Mini Fantasy Forgotten Plains](https://krishna-palacio.itch.io/minifantasy-forgotten-plains)  
   - [Mini Fantasy Dungeon](https://krishna-palacio.itch.io/minifantasy-dungeon)
 - Example meshes made using **Crocotile3D**:  
-  - [Crocotile3D by Prominent](https://prominent.itch.io/crocotile3d)
+  - [Crocotile3D](https://prominent.itch.io/crocotile3d)
 
 Thank you for using Tile to Gridmap!
