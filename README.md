@@ -218,6 +218,8 @@ Proper setup of your **TileSet** and **MeshLibrary** is required for the system 
 
 > More details on bitmasking: [Classification of Tilesets by Boris the Brave](https://www.boristhebrave.com/2021/11/14/classification-of-tilesets/#A_Recap_on_Auto-Tiling)
 
+![MeshTile Name Example](https://github.com/MatthewKonobri/Godot_Tile_to_Gridmap/blob/master/screenshots/Photos_7D9RqtlfrY.png?raw=true)
+
 ---
 
 ## Drawing the Tilemap
