@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TerrainTypeStair" load_steps=2 format=3 uid="uid://berjvugkp6p8h"]
+
+[ext_resource type="Script" uid="uid://cmp1t2kg7hxqi" path="res://TerrainGeneration/scripts/terrain_type_stair.gd" id="1_hqi1l"]
+
+[resource]
+script = ExtResource("1_hqi1l")
+name = "fp_stair_dirt_base"
+type = 5
+trigger = "_fp_stair_dirt"
+allow_alts = false
+metadata/_custom_type_script = "uid://cmp1t2kg7hxqi"

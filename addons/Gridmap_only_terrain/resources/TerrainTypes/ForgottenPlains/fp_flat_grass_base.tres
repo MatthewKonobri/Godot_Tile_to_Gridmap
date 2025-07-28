@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TerrainTypeFlat" load_steps=2 format=3 uid="uid://dw0a04wonew7v"]
+
+[ext_resource type="Script" uid="uid://c857uuhgilo8m" path="res://TerrainGeneration/scripts/terrain_type_flat.gd" id="1_ucaj8"]
+
+[resource]
+script = ExtResource("1_ucaj8")
+name = "fp_flat_grass_base"
+type = 1
+trigger = "_fp_grass"
+allow_alts = true
+metadata/_custom_type_script = "uid://c857uuhgilo8m"

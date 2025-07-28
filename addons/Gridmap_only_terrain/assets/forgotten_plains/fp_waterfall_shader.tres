@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://6rs4cvm3emf4"]
+
+[ext_resource type="Shader" uid="uid://c6u33kalirh1a" path="res://scenes/tools/MeshLibs/uvanimator.gdshader" id="1_3plgo"]
+[ext_resource type="Texture2D" uid="uid://tma57o4cn61l" path="res://TerrainGeneration/assets/forgotten_plains/Forgotten_Plains_waterfall_all.png" id="2_3plgo"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3plgo")
+shader_parameter/albedo_tex = ExtResource("2_3plgo")
+shader_parameter/alpha_threshold = 0.01
+shader_parameter/step_pixels_x = 32.0001
+shader_parameter/step_pixels_y = 0.0
+shader_parameter/total_frames = 4
+shader_parameter/speed_fps = 5.0

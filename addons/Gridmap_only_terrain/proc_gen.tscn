@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=3 uid="uid://pgvql8irsx5x"]
+
+[ext_resource type="Script" uid="uid://p8131bwymmh4" path="res://TerrainGeneration/scripts/proc_gen/terrain_generator.gd" id="1_c0uv4"]
+[ext_resource type="MeshLibrary" uid="uid://cfnjyko4ud4bw" path="res://TerrainGeneration/resources/fp_mesh_lib.tres" id="1_n7stt"]
+[ext_resource type="Script" uid="uid://6t4vptwd4ot7" path="res://TerrainGeneration/scripts/proc_gen/terrain_pass.gd" id="2_n2yen"]
+[ext_resource type="Script" uid="uid://bi003qg2wk8gu" path="res://TerrainGeneration/scripts/terrain_grid_map.gd" id="2_uw2vk"]
+[ext_resource type="Script" uid="uid://c37l8l6caesi8" path="res://TerrainGeneration/scripts/proc_gen/terrain_pass_height_map.gd" id="3_klv0r"]
+[ext_resource type="Script" uid="uid://cesvfuqgdmh2m" path="res://TerrainGeneration/scripts/terrain_type.gd" id="6_ei1gk"]
+[ext_resource type="Script" uid="uid://oy34xd1rv6t1" path="res://TerrainGeneration/scripts/terrain_type_base.gd" id="7_sfa7d"]
+[ext_resource type="Script" uid="uid://bxrcuxvjihg6q" path="res://TerrainGeneration/scripts/terrain_type_cliff.gd" id="8_50mnd"]
+
+[sub_resource type="Resource" id="Resource_t4l0h"]
+script = ExtResource("3_klv0r")
+base_tile_name = "_fp_base"
+cliff_tile_name = "_fp_cliff_stone"
+height_scale = 3
+noise_frequency = 0.1
+noise_octaves = 3
+pass_name = "Cliff"
+priority = 0
+enabled = true
+metadata/_custom_type_script = "uid://c37l8l6caesi8"
+
+[sub_resource type="Resource" id="Resource_jnfbl"]
+script = ExtResource("7_sfa7d")
+name = "fp_base"
+type = 0
+trigger = "_fp_base"
+allow_alts = false
+alt_chance = 75.0
+metadata/_custom_type_script = "uid://oy34xd1rv6t1"
+
+[sub_resource type="Resource" id="Resource_r55j1"]
+script = ExtResource("8_50mnd")
+use_bottom = false
+use_top_center = false
+name = "fp_cliff_stone_base"
+type = 4
+trigger = "_fp_cliff_stone"
+allow_alts = false
+alt_chance = 75.0
+metadata/_custom_type_script = "uid://bxrcuxvjihg6q"
+
+[node name="ProcGen" type="Node3D"]
+
+[node name="TerrainGenerator" type="Node" parent="." node_paths=PackedStringArray("terrain_gridmap")]
+script = ExtResource("1_c0uv4")
+terrain_gridmap = NodePath("TerrainGridMap")
+passes = Array[ExtResource("2_n2yen")]([SubResource("Resource_t4l0h")])
+
+[node name="TerrainGridMap" type="GridMap" parent="TerrainGenerator" node_paths=PackedStringArray("output_gridmap")]
+mesh_library = ExtResource("1_n7stt")
+script = ExtResource("2_uw2vk")
+output_gridmap = NodePath("../../OutputGridMap")
+terrain_types = Array[ExtResource("6_ei1gk")]([SubResource("Resource_jnfbl"), SubResource("Resource_r55j1")])
+metadata/_custom_type_script = "uid://bi003qg2wk8gu"
+
+[node name="OutputGridMap" type="GridMap" parent="."]
+visible = false
+mesh_library = ExtResource("1_n7stt")
+cell_size = Vector3(1, 1, 1)

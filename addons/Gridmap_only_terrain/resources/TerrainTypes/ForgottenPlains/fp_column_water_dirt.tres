@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TerrainTypeColumn" load_steps=2 format=3 uid="uid://pb3b2uikopfe"]
+
+[ext_resource type="Script" uid="uid://brmhwga3bn7i" path="res://TerrainGeneration/scripts/terrain_type_column.gd" id="1_dgyw0"]
+
+[resource]
+script = ExtResource("1_dgyw0")
+name = "fp_column_water_dirt"
+type = 7
+trigger = "_fp_waterfall"
+allow_alts = false
+metadata/_custom_type_script = "uid://brmhwga3bn7i"

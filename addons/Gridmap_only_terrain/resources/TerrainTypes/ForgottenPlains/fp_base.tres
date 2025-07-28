@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TerrainTypeBase" load_steps=2 format=3 uid="uid://c44e0w5qbtnli"]
+
+[ext_resource type="Script" uid="uid://oy34xd1rv6t1" path="res://TerrainGeneration/scripts/terrain_type_base.gd" id="1_pbilh"]
+
+[resource]
+script = ExtResource("1_pbilh")
+name = "fp_base"
+type = 0
+trigger = "_fp_base"
+allow_alts = false
+metadata/_custom_type_script = "uid://oy34xd1rv6t1"

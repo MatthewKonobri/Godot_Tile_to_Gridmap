@@ -1,0 +1,38 @@
+[gd_scene load_steps=22 format=3 uid="uid://cjtl1tvqjap3f"]
+
+[ext_resource type="MeshLibrary" uid="uid://cfnjyko4ud4bw" path="res://TerrainGeneration/resources/fp_mesh_lib.tres" id="1_afqk4"]
+[ext_resource type="Script" uid="uid://bi003qg2wk8gu" path="res://TerrainGeneration/scripts/terrain_grid_map.gd" id="2_afqk4"]
+[ext_resource type="Script" uid="uid://cesvfuqgdmh2m" path="res://TerrainGeneration/scripts/terrain_type.gd" id="3_uu2mm"]
+[ext_resource type="Resource" uid="uid://c44e0w5qbtnli" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_base.tres" id="4_o6mry"]
+[ext_resource type="Resource" uid="uid://dw0a04wonew7v" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flat_grass_base.tres" id="5_qh26m"]
+[ext_resource type="Resource" uid="uid://bimxnx3s26gpm" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flat_dirt_base.tres" id="6_vnasj"]
+[ext_resource type="Resource" uid="uid://baeoqmwt6symh" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flat_water_dirt.tres" id="7_4p34j"]
+[ext_resource type="Resource" uid="uid://beay4xdfw73eb" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_cliff_stone_base.tres" id="8_ta0hd"]
+[ext_resource type="Resource" uid="uid://vyc8yjv1m70" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_stair_stone_base.tres" id="9_pvktj"]
+[ext_resource type="Resource" uid="uid://b2atihhmjjqvp" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flat_tile_base.tres" id="10_4p34j"]
+[ext_resource type="Resource" uid="uid://bf7kcdai08mxs" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flat_water_base.tres" id="10_it0ge"]
+[ext_resource type="Resource" uid="uid://ka8kjfb74jcu" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flow_water_base_north.tres" id="11_gpnk7"]
+[ext_resource type="Resource" uid="uid://b45ns7adb7vlx" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flat_tile_dirt.tres" id="11_ta0hd"]
+[ext_resource type="Resource" uid="uid://cr0lrhr78x5q" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flow_water_base_south.tres" id="12_uekck"]
+[ext_resource type="Resource" uid="uid://dm1m11jch1jvw" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flow_water_base_east.tres" id="13_2qmlf"]
+[ext_resource type="Resource" uid="uid://dm3m6ulu0tddf" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flow_water_base_west.tres" id="14_11jo3"]
+[ext_resource type="Resource" uid="uid://xnja6j45etch" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flow_water_base_turn_cw.tres" id="15_tm124"]
+[ext_resource type="Resource" uid="uid://dhxba6gu153o3" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_flow_water_base_turn_ccw.tres" id="16_4cc4w"]
+[ext_resource type="Resource" uid="uid://dwjnsqqxgrbwt" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_cliff_dirt_base.tres" id="17_78qhl"]
+[ext_resource type="Resource" uid="uid://pb3b2uikopfe" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_column_water_dirt.tres" id="18_n02j1"]
+[ext_resource type="Resource" uid="uid://berjvugkp6p8h" path="res://TerrainGeneration/resources/TerrainTypes/ForgottenPlains/fp_stair_dirt_base.tres" id="20_pvktj"]
+
+[node name="TerrainGen" type="Node3D"]
+
+[node name="TerrainGridMap" type="GridMap" parent="." node_paths=PackedStringArray("output_gridmap")]
+mesh_library = ExtResource("1_afqk4")
+cell_size = Vector3(1, 1, 1)
+script = ExtResource("2_afqk4")
+output_gridmap = NodePath("../GridMap")
+terrain_types = Array[ExtResource("3_uu2mm")]([ExtResource("4_o6mry"), ExtResource("17_78qhl"), ExtResource("8_ta0hd"), ExtResource("18_n02j1"), ExtResource("6_vnasj"), ExtResource("5_qh26m"), ExtResource("10_4p34j"), ExtResource("11_ta0hd"), ExtResource("10_it0ge"), ExtResource("7_4p34j"), ExtResource("13_2qmlf"), ExtResource("11_gpnk7"), ExtResource("12_uekck"), ExtResource("16_4cc4w"), ExtResource("15_tm124"), ExtResource("14_11jo3"), ExtResource("20_pvktj"), ExtResource("9_pvktj")])
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_afqk4")
+cell_size = Vector3(1, 1, 1)
+metadata/_editor_floor_ = Vector3(0, 0, 0)

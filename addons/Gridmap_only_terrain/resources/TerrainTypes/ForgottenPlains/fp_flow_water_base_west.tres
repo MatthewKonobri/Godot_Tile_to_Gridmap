@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TerrainTypeFlow" load_steps=2 format=3 uid="uid://dm3m6ulu0tddf"]
+
+[ext_resource type="Script" uid="uid://dwr6l23wovmww" path="res://TerrainGeneration/scripts/terrain_type_flow.gd" id="1_6f0l2"]
+
+[resource]
+script = ExtResource("1_6f0l2")
+name = "fp_flow_water_base_west"
+type = 6
+trigger = "_fp_water_west"
+allow_alts = false
+metadata/_custom_type_script = "uid://dwr6l23wovmww"
