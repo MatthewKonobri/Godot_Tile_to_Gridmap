@@ -1,6 +1,10 @@
 
 # Tile to Gridmap for Godot 4.4
 
+## Status On Hold:
+Unfortunately I have not had the time to continue work on this between my other obligations and projects. 
+I do want to get back to this when I have some extra free time, but for now I am keeping this project on hold. 
+
 ## Quick Overview Video
 [![Overview Video Youtube](http://img.youtube.com/vi/63B2U_EJdCY/0.jpg)](http://www.youtube.com/watch?v=63B2U_EJdCY)
 
